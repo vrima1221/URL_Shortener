@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "full": "https://example.com",
+    "short": "example1"
+  },
+  {
+    "id": 2,
+    "full": "https://testforrender.com",
+    "short": "example2"
+  },
+  {
+    "id": 3,
+    "full": "https://testnextrow.com",
+    "short": "example3"
+  }
+]

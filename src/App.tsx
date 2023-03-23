@@ -1,27 +1,27 @@
 import React from 'react';
 import './App.scss';
+import {
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { URLShortener } from './pages/URLShortener/URLShortener';
+import { About } from './pages/About/About';
+// import urlsFromServer from './data/urls.json';
 
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
+// const URLSFromServer = urlsFromServer;
 
 export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<About />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/shortener" element={<URLShortener />} />
+
+      </Routes>
     </div>
   );
 };
