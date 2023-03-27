@@ -8,20 +8,22 @@ import {
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { URLShortener } from './pages/URLShortener/URLShortener';
 import { About } from './pages/About/About';
-// import urlsFromServer from './data/urls.json';
-
-// const URLSFromServer = urlsFromServer;
+import { URLInfoPage } from './pages/URLInfoPage/URLInfoPage';
+import { Header } from './components/Header/Header';
 
 export const App: React.FC = () => {
   return (
-    <div className="container">
-      <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="*" element={<NotFoundPage />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="/shortener" element={<URLShortener />} />
-
-      </Routes>
-    </div>
+    <>
+      <Header />
+      <div className="container">
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<URLShortener />} />
+          <Route path="/:id" element={<URLInfoPage />} />
+        </Routes>
+      </div>
+    </>
   );
 };

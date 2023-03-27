@@ -1,5 +1,13 @@
 export interface URL {
   id: number,
-  full: string,
-  short: string,
+  fullUrl: string,
+  shortUrl: string,
 }
+
+export type dataFromServer = {
+  value: URL[]
+  contentTypes: []
+  declaredType: any
+  formatters: []
+  statusCode: number
+};

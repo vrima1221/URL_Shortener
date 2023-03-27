@@ -1,12 +1,12 @@
-import { URL } from '../types/URL';
+import { dataFromServer, URL } from '../types/URL';
 import { client } from './fetchClient';
 
-export const getLinkById = (id: number) => {
-  return client.get(`/Get?id=${id}`);
+export const getLinkById = (id: string | undefined) => {
+  return client.get<dataFromServer>(`/Get?id=${id}`);
 };
 
-export const getAll = () => {
-  return client.get('/GetAll');
+export const getAll = async () => {
+  return client.get<any>('/GetAll');
 };
 
 export const postOrPatchLink = (url: URL) => {

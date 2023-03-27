@@ -1,4 +1,4 @@
-const BASE_URL = 'https://localhost:7097/ShortUrl';
+const BASE_URL = 'https://localhost:7258/ShortUrl';
 
 type RequestMethod = 'GET' | 'POST' | 'DELETE';
 

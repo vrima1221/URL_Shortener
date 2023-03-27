@@ -1,45 +1,45 @@
-import React, { useState } from 'react';
-import { postOrPatchLink } from '../../api/links';
-import { URL } from '../../types/URL';
-import { shrinkURL } from '../../utils/shrinkURL';
+import React from 'react';
+import './URLForm.scss';
+import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
 
 type Props = {
-  urls: URL[]
+  isError: boolean
+  errorMessage: string
+  onChange: (value: string) => void
+  currentUrl: string
+  onSubmit: (event: React.FormEvent) => void
 };
 
-export const URLForm: React.FC<Props> = () => {
-  const [currentURL, setCurrentURL] = useState('');
-
-  // const isURLAlreadyShrinked = urls.some(url => url.full === currentURL);
-
-  const handleFormSubmit = () => {
-    // if (!isURLAlreadyShrinked) {
-    //   throw new Error('URL is already shortened');
-    // }
-
-    const shortURL = shrinkURL(currentURL);
-
-    const preparedData = {
-      id: 0,
-      full: currentURL,
-      short: shortURL,
-    };
-
-    postOrPatchLink(preparedData);
-  };
-
+export const URLForm: React.FC<Props> = ({
+  isError,
+  errorMessage,
+  onChange,
+  currentUrl,
+  onSubmit,
+}) => {
   return (
-    <form
-      action=""
-      onSubmit={handleFormSubmit}
-    >
-      <input
-        type="url"
-        placeholder="Input URL to shrink"
-        value={currentURL}
-        onChange={e => setCurrentURL(e.target.value)}
-      />
-      <button type="submit">Shrink</button>
-    </form>
+    <>
+      <form
+        className="form"
+        action=""
+        onSubmit={onSubmit}
+      >
+        <input
+          className="form__input"
+          type="url"
+          placeholder="Input URL to shrink"
+          value={currentUrl}
+          onChange={e => onChange(e.target.value)}
+        />
+        <button
+          className="form__button"
+          type="submit"
+        >
+          Shrink
+        </button>
+      </form>
+
+      <ErrorNotification isError={isError} message={errorMessage} />
+    </>
   );
 };
