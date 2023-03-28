@@ -17,7 +17,6 @@ function request<T>(
     };
   }
 
-  // we wait for testing purpose to see loaders
   return fetch(BASE_URL + url, options)
     .then(response => {
       if (!response.ok) {

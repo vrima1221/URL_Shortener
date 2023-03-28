@@ -79,12 +79,22 @@ export const URLShortener: React.FC = () => {
     };
 
     setCurrentURL('');
-    postOrPatchLink(preparedData)
-      .then((addedUrl) => (
-        setUrlsFromServer(prev => [
-          ...prev,
-          addedUrl.value,
-        ])));
+
+    try {
+      postOrPatchLink(preparedData)
+        .then((addedUrl) => {
+          if (addedUrl) {
+            setUrlsFromServer(prev => [
+              ...prev,
+              addedUrl.value,
+            ]);
+          } else {
+            showErrorMessage('Cant add new URL');
+          }
+        });
+    } catch (error) {
+      showErrorMessage('Error');
+    }
   };
 
   return (
