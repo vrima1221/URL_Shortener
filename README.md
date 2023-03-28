@@ -1,9 +1,5 @@
-# React TypeScript Starter Pack
+# URL Shortener
 
-To use this template click `Use this template`
+To use this app you need to host this [API](https://github.com/vrima1221/UrlShortenerAPI) at your localhost at port 7258
 
-### Available Scripts
-
-`Deploy` - available to deploy your application to gh-pages
-
-`SCSS Preprocessor` - available to write your styles with modern style language
+- [DEMO LINK](https://vrima1221.github.io/URL_Shortener/)
